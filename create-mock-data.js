@@ -1,7 +1,7 @@
 const { models, sequelize } = require('./models');
 
 function createData () {
-  let usersPromise = models.User.bulkCreate([
+  const usersPromise = models.User.bulkCreate([
     {
       login: 'veged',
       avatarUrl: 'https://avatars3.githubusercontent.com/u/15365?s=460&v=4',
@@ -19,7 +19,7 @@ function createData () {
     }
   ]);
 
-  let roomsPromise = models.Room.bulkCreate([
+  const roomsPromise = models.Room.bulkCreate([
     {
       title: '404',
       capacity: 5,
@@ -48,12 +48,12 @@ function createData () {
   ]);
 
   const HOUR = 60 * 60 * 1000;
-  let now = new Date();
-  let oneHourLater = new Date(now.getTime() + HOUR);
-  let twoHoursLater = new Date(oneHourLater.getTime() + HOUR);
-  let threeHoursLater = new Date(twoHoursLater.getTime() + HOUR);
+  const now = new Date();
+  const oneHourLater = new Date(now.getTime() + HOUR);
+  const twoHoursLater = new Date(oneHourLater.getTime() + HOUR);
+  const threeHoursLater = new Date(twoHoursLater.getTime() + HOUR);
 
-  let eventsPromise = models.Event.bulkCreate([
+  const eventsPromise = models.Event.bulkCreate([
     {
       title: 'ШРИ 2018 - начало',
       dateStart: now,
@@ -77,8 +77,8 @@ function createData () {
       models.Room.findAll(),
       models.Event.findAll()
     ]))
-    .then(function ([users, rooms, events]) {
-      let promises = [];
+    .then(([users, rooms, events]) => {
+      const promises = [];
       promises.push(events[0].setRoom(rooms[0]));
       promises.push(events[1].setRoom(rooms[1]));
       promises.push(events[2].setRoom(rooms[2]));

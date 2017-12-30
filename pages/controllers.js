@@ -1,4 +1,4 @@
-module.exports.index = function (req, res) {
+module.exports.index = (req, res) => {
   res.send(`
     <html>
       <head>
