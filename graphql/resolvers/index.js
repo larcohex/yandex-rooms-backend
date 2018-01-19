@@ -9,6 +9,12 @@ module.exports = function resolvers () {
 
     Mutation: mutation,
 
+    Room: {
+      events (room) {
+        return room.getEvents();
+      }
+    },
+
     Event: {
       users (event) {
         return event.getUsers();
