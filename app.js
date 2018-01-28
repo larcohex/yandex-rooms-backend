@@ -10,8 +10,8 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/', pagesRoutes);
 app.use('/graphql', graphqlRoutes);
+app.use('/', pagesRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = app;
