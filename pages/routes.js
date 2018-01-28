@@ -1,7 +1,6 @@
 const express = require('express');
-
+const path = require('path');
 const router = express.Router();
-const { index } = require('./controllers');
 const { models } = require('../models');
 const getRecommendation = require('../recommendations/get-recommendation');
 
@@ -37,6 +36,10 @@ router.get('/recommendation', (req, res) => {
     });
 });
 
-router.get('/', index);
+router.use(express.static(path.join(__dirname, '../public')));
+
+router.get('/*', (req, res) => {
+  res.sendFile(path.resolve('public/index.html'));
+});
 
 module.exports = router;
